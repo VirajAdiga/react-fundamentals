@@ -4,6 +4,7 @@ import { MouseEvent } from "react";
 interface ListGroupProps {
   items: String[];
   heading: String;
+  onSelectItem: (item: String) => void;
 }
 
 function ListGroup(props: ListGroupProps) {
@@ -16,14 +17,14 @@ function ListGroup(props: ListGroupProps) {
   if (props.items.length === 0)
     return (
       <Fragment>
-        <h1>List</h1>
+        <h1>{props.heading}</h1>
         <p>No itesms</p>
       </Fragment>
     );
 
   return (
     <Fragment>
-      <h1>List</h1>
+      <h1>{props.heading}</h1>
       <ul className="list-group">
         {props.items.map((item, index) => (
           <li
@@ -32,7 +33,10 @@ function ListGroup(props: ListGroupProps) {
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            onClick={() => setSelectedIndex(index)}
+            onClick={() => {
+              setSelectedIndex(index);
+              props.onSelectItem(item);
+            }}
           >
             {item}
           </li>
