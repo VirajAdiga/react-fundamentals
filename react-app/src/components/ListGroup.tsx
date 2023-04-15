@@ -1,7 +1,16 @@
 import { Fragment } from "react";
 
 function ListGroup() {
-  const cities = ["Delhi", "Hyderabd", "Bangalore"];
+  let cities = ["Delhi", "Hyderabd", "Bangalore"];
+  cities = [];
+
+  if (cities.length === 0)
+    return (
+      <Fragment>
+        <h1>List</h1>
+        <p>No itesms</p>
+      </Fragment>
+    );
 
   return (
     <Fragment>
