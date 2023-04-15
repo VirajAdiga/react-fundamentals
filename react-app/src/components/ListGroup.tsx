@@ -1,8 +1,12 @@
 import { Fragment } from "react";
+import { MouseEvent } from "react";
 
 function ListGroup() {
   let cities = ["Delhi", "Hyderabd", "Bangalore"];
-  cities = [];
+
+  function handleClick(event: MouseEvent) {
+    console.log(event);
+  }
 
   if (cities.length === 0)
     return (
@@ -17,7 +21,9 @@ function ListGroup() {
       <h1>List</h1>
       <ul className="list-group">
         {cities.map((city) => (
-          <li key={city}>{city}</li>
+          <li className="list-group-item" key={city} onClick={handleClick}>
+            {city}
+          </li>
         ))}
       </ul>
     </Fragment>
